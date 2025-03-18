@@ -21,7 +21,7 @@ const API_BASE_URL = "https://api.hackmd.io/v1";
 // Create an MCP server for HackMD API
 const server = new McpServer({
   name: "hackmd-mcp",
-  version: "1.0.4",
+  version: "1.0.5",
 });
 
 // Utility function to make authenticated API requests
