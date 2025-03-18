@@ -132,3 +132,7 @@ Please list all my notes.
 ## Security Notice
 
 This MCP server requires your HackMD API token in the .env file or as an environment variable. Keep this information secure and never commit it to version control.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
