@@ -8,14 +8,19 @@ This is a Model Context Protocol (MCP) server for interacting with the HackMD AP
 - View read history
 - Work with team notes
 
+## Requirements
+
+- Node.js 18+
+- HackMD API token
+
 ## Installation
 
-Clone the repository and install dependencies with Bun:
+Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/yourusername/hackmd-mcp.git
+git clone https://github.com/yuna0x0/hackmd-mcp.git
 cd hackmd-mcp
-bun install
+bun install  # or use npm, yarn, pnpm
 ```
 
 ## Configuration
@@ -42,11 +47,6 @@ HACKMD_API_TOKEN=your_api_token_here bun start
 
 You can get an API token from [HackMD settings](https://hackmd.io/settings#api).
 
-## Requirements
-
-- Bun (or Node.js 18+)
-- HackMD API token
-
 ## Usage
 
 ### Start the MCP server
@@ -54,7 +54,7 @@ You can get an API token from [HackMD settings](https://hackmd.io/settings#api).
 #### Local installation:
 
 ```bash
-bun start
+bun start  # or use npm, yarn, pnpm
 ```
 
 #### Using bunx (without cloning):
@@ -68,14 +68,11 @@ HACKMD_API_TOKEN=your_token_here bunx hackmd-mcp
 You can use the MCP Inspector to test and debug the HackMD MCP server:
 
 ```bash
-# Using a local installation
-npx @modelcontextprotocol/inspector bun run index.ts
+# Using the package.json script
+bun run inspector  # or use npm, yarn, pnpm
 
-# With environment variables
-npx @modelcontextprotocol/inspector -e HACKMD_API_TOKEN=your_token_here bun run index.ts
-
-# Using bunx
-npx @modelcontextprotocol/inspector bunx hackmd-mcp
+# Alternative: Direct use with bunx (or npx)
+bunx @modelcontextprotocol/inspector -e HACKMD_API_TOKEN=your_token_here bunx hackmd-mcp
 ```
 
 Then open your browser to the provided URL (usually http://localhost:5173) to access the MCP Inspector interface. From there, you can:
@@ -95,8 +92,11 @@ This is particularly useful for testing your setup before connecting it to Claud
 {
   "mcpServers": {
     "hackmd": {
-      "command": "bun",
-      "args": ["run", "/path/to/hackmd-mcp/index.ts"]
+      "command": "npx",
+      "args": ["hackmd-mcp"],
+      "env": {
+        "HACKMD_API_TOKEN": "your_token_here"
+      }
     }
   }
 }
@@ -132,13 +132,3 @@ Please list all my notes.
 ## Security Notice
 
 This MCP server requires your HackMD API token in the .env file or as an environment variable. Keep this information secure and never commit it to version control.
-
-## Building
-
-To build a standalone version of the server:
-
-```bash
-bun run build
-```
-
-This will create a build in the `dist` directory.

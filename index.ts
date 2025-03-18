@@ -1,9 +1,10 @@
+#!/usr/bin/env node
+
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
-import packageJson from "./package.json" assert { type: "json" };
 
 // Load environment variables
 dotenv.config();
@@ -19,8 +20,8 @@ const API_BASE_URL = "https://api.hackmd.io/v1";
 
 // Create an MCP server for HackMD API
 const server = new McpServer({
-  name: packageJson.name,
-  version: packageJson.version,
+  name: "hackmd-mcp",
+  version: "1.0.1",
 });
 
 // Utility function to make authenticated API requests
