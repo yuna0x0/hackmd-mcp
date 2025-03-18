@@ -93,7 +93,7 @@ This is particularly useful for testing your setup before connecting it to Claud
   "mcpServers": {
     "hackmd": {
       "command": "npx",
-      "args": ["hackmd-mcp"],
+      "args": ["-y", "hackmd-mcp"],
       "env": {
         "HACKMD_API_TOKEN": "your_token_here"
       }
