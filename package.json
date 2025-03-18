@@ -2,7 +2,9 @@
   "name": "hackmd-mcp",
   "module": "index.ts",
   "type": "module",
-  "version": "1.0.1",
+  "license": "MIT",
+  "version": "1.0.2",
+  "author": "yuna0x0 <yuna@yuna0x0.com>",
   "bin": {
     "hackmd-mcp": "dist/index.js"
   },
