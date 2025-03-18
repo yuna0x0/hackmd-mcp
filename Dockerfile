@@ -8,10 +8,9 @@ COPY package*.json ./
 # Install dependencies with cache
 RUN --mount=type=cache,target=/root/.npm npm install
 
-# Now copy source code (excluding files in .dockerignore)
-COPY src/ ./src/
+# Copy source code and TypeScript config
+COPY index.ts ./
 COPY tsconfig*.json ./
-# Add any other necessary project files here
 
 # Build the application
 RUN npm run build
@@ -33,8 +32,5 @@ RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts --omit=dev
 
 # Set user to non-root for better security
 USER node
-
-# Set health check if applicable
-# HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 CMD node healthcheck.js
 
 ENTRYPOINT ["node", "/app/dist/index.js"]
