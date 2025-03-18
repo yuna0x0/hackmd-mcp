@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "license": "MIT",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "yuna0x0 <yuna@yuna0x0.com>",
   "repository": {
     "type": "git",
@@ -32,5 +32,13 @@
     "@modelcontextprotocol/inspector": "^0.6.0",
     "shx": "^0.4.0",
     "typescript": "^5.8.2"
-  }
+  },
+  "keywords": [
+    "api",
+    "ai",
+    "mcp",
+    "hackmd",
+    "llm",
+    "mcp-server"
+  ]
 }
