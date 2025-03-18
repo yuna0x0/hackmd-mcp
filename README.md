@@ -1,6 +1,6 @@
 # HackMD MCP Server
 
-This is a Model Context Protocol (MCP) server for interacting with the HackMD API. It allows AI assistants to perform operations such as:
+This is a Model Context Protocol (MCP) server for interacting with the [HackMD API](https://hackmd.io/@hackmd-api/developer-portal). It allows AI assistants to perform operations such as:
 
 - Get user information
 - List user's notes
