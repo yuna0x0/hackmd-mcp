@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "license": "MIT",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "yuna0x0 <yuna@yuna0x0.com>",
   "bin": {
     "hackmd-mcp": "dist/index.js"
