@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "license": "MIT",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "author": "yuna0x0 <yuna@yuna0x0.com>",
   "repository": {
     "type": "git",
@@ -23,9 +23,9 @@
     "watch": "tsc --watch"
   },
   "dependencies": {
+    "@hackmd/api": "^2.4.0",
     "@modelcontextprotocol/sdk": "^1.7.0",
     "dotenv": "^16.4.7",
-    "node-fetch": "^3.3.2",
     "zod": "^3.24.2"
   },
   "devDependencies": {

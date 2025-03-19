@@ -34,7 +34,7 @@ bun install  # or use npm, yarn, pnpm
 
 2. Edit the `.env` file and add your HackMD API token:
    ```
-   HACKMD_API_TOKEN=your_api_token_here
+   HACKMD_API_TOKEN=your_api_token
    ```
 
 ### Option 2: Using environment variables inline
@@ -42,7 +42,7 @@ bun install  # or use npm, yarn, pnpm
 You can also provide the API token directly when running the server:
 
 ```bash
-HACKMD_API_TOKEN=your_api_token_here bun start
+HACKMD_API_TOKEN=your_api_token bun start
 ```
 
 You can get an API token from [HackMD settings](https://hackmd.io/settings#api).
@@ -60,7 +60,7 @@ bun start  # or use npm, yarn, pnpm
 #### Using bunx (without cloning):
 
 ```bash
-HACKMD_API_TOKEN=your_token_here bunx hackmd-mcp
+HACKMD_API_TOKEN=your_api_token bunx hackmd-mcp
 ```
 
 ### Debugging with MCP Inspector
@@ -72,7 +72,7 @@ You can use the MCP Inspector to test and debug the HackMD MCP server:
 bun run inspector  # or use npm, yarn, pnpm
 
 # Alternative: Direct use with bunx (or npx)
-bunx @modelcontextprotocol/inspector -e HACKMD_API_TOKEN=your_token_here bunx hackmd-mcp
+bunx @modelcontextprotocol/inspector -e HACKMD_API_TOKEN=your_api_token bunx hackmd-mcp
 ```
 
 Then open your browser to the provided URL (usually http://localhost:5173) to access the MCP Inspector interface. From there, you can:
@@ -95,7 +95,7 @@ This is particularly useful for testing your setup before connecting it to Claud
       "command": "npx",
       "args": ["-y", "hackmd-mcp"],
       "env": {
-        "HACKMD_API_TOKEN": "your_token_here"
+        "HACKMD_API_TOKEN": "your_api_token"
       }
     }
   }
@@ -109,13 +109,16 @@ This is particularly useful for testing your setup before connecting it to Claud
 
 - **get_user_info**: Get information about the authenticated user
 - **list_user_notes**: List all notes owned by the user
-- **get_note**: Get a specific note by ID
+- **get_note**: Get a note by its ID
 - **create_note**: Create a new note
 - **update_note**: Update an existing note
 - **delete_note**: Delete a note
-- **get_history**: View reading history
-- **list_teams**: List available teams
-- **list_team_notes**: List notes in a team
+- **get_history**: Get user's reading history
+- **list_teams**: List all teams accessible to the user
+- **list_team_notes**: List all notes in a team
+- **create_team_note**: Create a new note in a team
+- **update_team_note**: Update an existing note in a team
+- **delete_team_note**: Delete a note in a team
 
 ## Example Usage in Claude
 
