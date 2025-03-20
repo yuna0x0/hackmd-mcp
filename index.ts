@@ -1,11 +1,10 @@
-#!/usr/bin/env node
-
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import dotenv from "dotenv";
 import HackMDAPI from "@hackmd/api";
 import {
+  SingleNote,
   NotePermissionRole,
   CommentPermissionType,
   CreateNoteOptions,
@@ -22,13 +21,66 @@ if (!API_TOKEN) {
 }
 const API_URL = process.env.HACKMD_API_URL;
 
+const CreateNoteOptionsSchema = {
+  title: z.string().optional().describe("Note title"),
+  content: z.string().optional().describe("Note content"),
+  readPermission: z
+    .enum([
+      NotePermissionRole.OWNER,
+      NotePermissionRole.SIGNED_IN,
+      NotePermissionRole.GUEST,
+    ])
+    .optional()
+    .describe("Read permission"),
+  writePermission: z
+    .enum([
+      NotePermissionRole.OWNER,
+      NotePermissionRole.SIGNED_IN,
+      NotePermissionRole.GUEST,
+    ])
+    .optional()
+    .describe("Write permission"),
+  commentPermission: z
+    .enum([
+      CommentPermissionType.DISABLED,
+      CommentPermissionType.FORBIDDEN,
+      CommentPermissionType.OWNERS,
+      CommentPermissionType.SIGNED_IN_USERS,
+      CommentPermissionType.EVERYONE,
+    ])
+    .optional()
+    .describe("Comment permission"),
+  permalink: z.string().optional().describe("Custom permalink"),
+};
+
+const UpdateNoteOptionsSchema = {
+  content: z.string().optional().describe("New note content"),
+  readPermission: z
+    .enum([
+      NotePermissionRole.OWNER,
+      NotePermissionRole.SIGNED_IN,
+      NotePermissionRole.GUEST,
+    ])
+    .optional()
+    .describe("Read permission"),
+  writePermission: z
+    .enum([
+      NotePermissionRole.OWNER,
+      NotePermissionRole.SIGNED_IN,
+      NotePermissionRole.GUEST,
+    ])
+    .optional()
+    .describe("Write permission"),
+  permalink: z.string().optional().describe("Custom permalink"),
+};
+
 // Initialize HackMD API client
 const client = new HackMDAPI.API(API_TOKEN, API_URL);
 
 // Create an MCP server for HackMD API
 const server = new McpServer({
   name: "hackmd-mcp",
-  version: "1.1.0",
+  version: "1.1.1",
 });
 
 // Tool: Get user information
@@ -112,42 +164,14 @@ server.tool(
 server.tool(
   "create_note",
   "Create a new note",
-  {
-    title: z.string().describe("Note title").optional(),
-    content: z.string().describe("Note content").optional(),
-    readPermission: z
-      .enum([
-        NotePermissionRole.OWNER,
-        NotePermissionRole.SIGNED_IN,
-        NotePermissionRole.GUEST,
-      ])
-      .optional()
-      .describe("Read permission"),
-    writePermission: z
-      .enum([
-        NotePermissionRole.OWNER,
-        NotePermissionRole.SIGNED_IN,
-        NotePermissionRole.GUEST,
-      ])
-      .optional()
-      .describe("Write permission"),
-    commentPermission: z
-      .enum([
-        CommentPermissionType.DISABLED,
-        CommentPermissionType.FORBIDDEN,
-        CommentPermissionType.OWNERS,
-        CommentPermissionType.SIGNED_IN_USERS,
-        CommentPermissionType.EVERYONE,
-      ])
-      .optional()
-      .describe("Comment permission"),
-  },
+  CreateNoteOptionsSchema,
   async ({
     title,
     content,
     readPermission,
     writePermission,
     commentPermission,
+    permalink,
   }) => {
     try {
       const payload: CreateNoteOptions = {
@@ -156,6 +180,7 @@ server.tool(
         readPermission,
         writePermission,
         commentPermission,
+        permalink,
       };
 
       const note = await client.createNote(payload);
@@ -183,28 +208,16 @@ server.tool(
   "Update an existing note",
   {
     noteId: z.string().describe("Note ID"),
-    content: z.string().optional().describe("New note content"),
-    readPermission: z
-      .enum([
-        NotePermissionRole.OWNER,
-        NotePermissionRole.SIGNED_IN,
-        NotePermissionRole.GUEST,
-      ])
-      .optional()
-      .describe("Read permission"),
-    writePermission: z
-      .enum([
-        NotePermissionRole.OWNER,
-        NotePermissionRole.SIGNED_IN,
-        NotePermissionRole.GUEST,
-      ])
-      .optional()
-      .describe("Write permission"),
-    permalink: z.string().optional().describe("Custom permalink"),
+    ...UpdateNoteOptionsSchema,
   },
   async ({ noteId, content, readPermission, writePermission, permalink }) => {
     try {
-      const updateData: Partial<CreateNoteOptions> = {
+      const updateData: Partial<
+        Pick<
+          SingleNote,
+          "content" | "readPermission" | "writePermission" | "permalink"
+        >
+      > = {
         content,
         readPermission,
         writePermission,
@@ -336,34 +349,7 @@ server.tool(
   "Create a new note in a team",
   {
     teamPath: z.string().describe("Team path"),
-    title: z.string().describe("Note title").optional(),
-    content: z.string().describe("Note content").optional(),
-    readPermission: z
-      .enum([
-        NotePermissionRole.OWNER,
-        NotePermissionRole.SIGNED_IN,
-        NotePermissionRole.GUEST,
-      ])
-      .describe("Read permission")
-      .optional(),
-    writePermission: z
-      .enum([
-        NotePermissionRole.OWNER,
-        NotePermissionRole.SIGNED_IN,
-        NotePermissionRole.GUEST,
-      ])
-      .describe("Write permission")
-      .optional(),
-    commentPermission: z
-      .enum([
-        CommentPermissionType.DISABLED,
-        CommentPermissionType.FORBIDDEN,
-        CommentPermissionType.OWNERS,
-        CommentPermissionType.SIGNED_IN_USERS,
-        CommentPermissionType.EVERYONE,
-      ])
-      .describe("Comment permission")
-      .optional(),
+    ...CreateNoteOptionsSchema,
   },
   async ({
     teamPath,
@@ -372,6 +358,7 @@ server.tool(
     readPermission,
     writePermission,
     commentPermission,
+    permalink,
   }) => {
     try {
       const payload: CreateNoteOptions = {
@@ -380,6 +367,7 @@ server.tool(
         readPermission,
         writePermission,
         commentPermission,
+        permalink,
       };
 
       const note = await client.createTeamNote(teamPath, payload);
@@ -408,24 +396,7 @@ server.tool(
   {
     teamPath: z.string().describe("Team path"),
     noteId: z.string().describe("Note ID"),
-    content: z.string().optional().describe("New note content"),
-    readPermission: z
-      .enum([
-        NotePermissionRole.OWNER,
-        NotePermissionRole.SIGNED_IN,
-        NotePermissionRole.GUEST,
-      ])
-      .optional()
-      .describe("Read permission"),
-    writePermission: z
-      .enum([
-        NotePermissionRole.OWNER,
-        NotePermissionRole.SIGNED_IN,
-        NotePermissionRole.GUEST,
-      ])
-      .optional()
-      .describe("Write permission"),
-    permalink: z.string().optional().describe("Custom permalink"),
+    ...UpdateNoteOptionsSchema,
   },
   async ({
     teamPath,
@@ -436,7 +407,12 @@ server.tool(
     permalink,
   }) => {
     try {
-      const updateData: Partial<CreateNoteOptions> = {
+      const updateData: Partial<
+        Pick<
+          SingleNote,
+          "content" | "readPermission" | "writePermission" | "permalink"
+        >
+      > = {
         content,
         readPermission,
         writePermission,
