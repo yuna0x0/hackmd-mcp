@@ -43,9 +43,9 @@ export function registerTeamNotesApiTools(
     "Create a new note in a team",
     {
       teamPath: z.string().describe("Team path"),
-      ...CreateNoteOptionsSchema,
+      payload: CreateNoteOptionsSchema.describe("Create note options"),
     },
-    async ({ teamPath, ...payload }) => {
+    async ({ teamPath, payload }) => {
       try {
         const note = await client.createTeamNote(teamPath, payload);
         return {
@@ -72,9 +72,9 @@ export function registerTeamNotesApiTools(
     {
       teamPath: z.string().describe("Team path"),
       noteId: z.string().describe("Note ID"),
-      ...UpdateNoteOptionsSchema,
+      options: UpdateNoteOptionsSchema.describe("Update note options"),
     },
-    async ({ teamPath, noteId, ...options }) => {
+    async ({ teamPath, noteId, options }) => {
       try {
         await client.updateTeamNote(teamPath, noteId, options);
         return {

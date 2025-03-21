@@ -66,8 +66,10 @@ export function registerUserNotesApiTools(
   server.tool(
     "create_note",
     "Create a new note",
-    CreateNoteOptionsSchema,
-    async (payload) => {
+    {
+      payload: CreateNoteOptionsSchema.describe("Create note options"),
+    },
+    async ({ payload }) => {
       try {
         const note = await client.createNote(payload);
         return {
@@ -93,9 +95,9 @@ export function registerUserNotesApiTools(
     "Update an existing note",
     {
       noteId: z.string().describe("Note ID"),
-      ...UpdateNoteOptionsSchema,
+      payload: UpdateNoteOptionsSchema.describe("Update note options"),
     },
-    async ({ noteId, ...payload }) => {
+    async ({ noteId, payload }) => {
       try {
         await client.updateNote(noteId, payload);
         return {

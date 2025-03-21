@@ -4,7 +4,7 @@ import {
   CommentPermissionType,
 } from "@hackmd/api/dist/type.js";
 
-export const CreateNoteOptionsSchema = {
+export const CreateNoteOptionsSchema = z.object({
   title: z.string().optional().describe("Note title"),
   content: z.string().optional().describe("Note content"),
   readPermission: z
@@ -34,9 +34,9 @@ export const CreateNoteOptionsSchema = {
     .optional()
     .describe("Comment permission"),
   permalink: z.string().optional().describe("Custom permalink"),
-};
+});
 
-export const UpdateNoteOptionsSchema = {
+export const UpdateNoteOptionsSchema = z.object({
   content: z.string().optional().describe("New note content"),
   readPermission: z
     .enum([
@@ -55,4 +55,4 @@ export const UpdateNoteOptionsSchema = {
     .optional()
     .describe("Write permission"),
   permalink: z.string().optional().describe("Custom permalink"),
-};
+});
