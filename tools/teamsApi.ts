@@ -1,5 +1,5 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import HackMDAPI from "@hackmd/api";
+import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import type HackMDAPI from "@hackmd/api";
 
 export function registerTeamsApiTools(
   server: McpServer,

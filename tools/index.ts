@@ -3,8 +3,8 @@ export { registerUserNotesApiTools } from "./userNotesApi.js";
 export { registerTeamsApiTools } from "./teamsApi.js";
 export { registerTeamNotesApiTools } from "./teamNotesApi.js";
 
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import HackMDAPI from "@hackmd/api";
+import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import type HackMDAPI from "@hackmd/api";
 import { registerUserApiTools } from "./userApi.js";
 import { registerUserNotesApiTools } from "./userNotesApi.js";
 import { registerTeamsApiTools } from "./teamsApi.js";
