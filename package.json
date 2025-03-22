@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "license": "MIT",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "author": "yuna0x0 <yuna@yuna0x0.com>",
   "repository": {
     "type": "git",
@@ -16,7 +16,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc && shx chmod +x dist/*.js",
+    "clean": "rimraf 'dist/'",
+    "build": "bun run clean && tsc && shx chmod +x dist/*.js",
     "prepare": "bun run build",
     "start": "bun run build && node dist/index.js",
     "inspector": "bun run build && mcp-inspector node dist/index.js",
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "@modelcontextprotocol/inspector": "^0.6.0",
+    "rimraf": "^6.0.1",
     "shx": "^0.4.0",
     "typescript": "^5.8.2"
   },
