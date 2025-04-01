@@ -1,4 +1,5 @@
 # HackMD MCP Server
+[![smithery badge](https://smithery.ai/badge/@yuna0x0/hackmd-mcp)](https://smithery.ai/server/@yuna0x0/hackmd-mcp)
 
 This is a Model Context Protocol (MCP) server for interacting with the [HackMD API](https://hackmd.io/@hackmd-api/developer-portal). It allows AI assistants to perform operations such as:
 
@@ -39,6 +40,14 @@ You can get an API token from [HackMD settings](https://hackmd.io/settings#api).
 
 2. Restart Claude Desktop
 3. Use the tools to interact with your HackMD account
+
+### Installing via Smithery
+
+To install HackMD MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@yuna0x0/hackmd-mcp):
+
+```bash
+npx -y @smithery/cli install @yuna0x0/hackmd-mcp --client claude
+```
 
 ## Available Tools
 
