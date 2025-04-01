@@ -1,0 +1,31 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - hackmdApiToken
+    properties:
+      hackmdApiToken:
+        type: string
+        description: Your HackMD API token for API authentication.
+      hackmdApiUrl:
+        type: string
+        default: https://api.hackmd.io/v1
+        description: Optional HackMD API URL, defaults to https://api.hackmd.io/v1
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({
+      command: 'node',
+      args: ['dist/index.js'],
+      env: {
+        HACKMD_API_TOKEN: config.hackmdApiToken,
+        HACKMD_API_URL: config.hackmdApiUrl
+      }
+    })
+  exampleConfig:
+    hackmdApiToken: your_dummy_api_token
+    hackmdApiUrl: https://api.hackmd.io/v1
