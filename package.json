@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "license": "MIT",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "yuna0x0 <yuna@yuna0x0.com>",
   "repository": {
     "type": "git",

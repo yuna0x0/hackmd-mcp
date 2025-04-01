@@ -62,7 +62,7 @@ You can get an API token from [HackMD settings](https://hackmd.io/settings#api).
 - **update_team_note**: Update an existing note in a team
 - **delete_team_note**: Delete a note in a team
 
-## Example Usage in Claude
+## Example Usage
 
 ```
 Can you help me manage my HackMD notes?
@@ -117,6 +117,18 @@ Then open your browser to the provided URL (usually http://localhost:5173) to ac
 4. View the responses
 
 This is particularly useful for testing your setup before connecting it to Claude or another AI assistant.
+
+## Docker
+
+Pull from Docker Hub:
+```bash
+docker pull yuna0x0/hackmd-mcp
+```
+
+Docker build (Local Development):
+```bash
+docker build -t yuna0x0/hackmd-mcp .
+```
 
 ## Security Notice
 
