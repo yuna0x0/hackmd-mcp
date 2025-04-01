@@ -11,80 +11,15 @@ This is a Model Context Protocol (MCP) server for interacting with the [HackMD A
 ## Requirements
 
 - Node.js 18+
-- HackMD API token
 
-## Installation
+## Environment Variables
 
-Clone the repository and install dependencies:
-
-```bash
-git clone https://github.com/yuna0x0/hackmd-mcp.git
-cd hackmd-mcp
-bun install  # or use npm, yarn, pnpm
-```
-
-## Configuration
-
-### Option 1: Using a .env file
-
-1. Create a `.env` file by copying the example:
-   ```bash
-   cp .env.example .env
-   ```
-
-2. Edit the `.env` file and add your HackMD API token:
-   ```
-   HACKMD_API_TOKEN=your_api_token
-   ```
-
-### Option 2: Using environment variables inline
-
-You can also provide the API token directly when running the server:
-
-```bash
-HACKMD_API_TOKEN=your_api_token bun start
-```
+- `HACKMD_API_TOKEN`: **[Required]** Your HackMD API token
+- `HACKMD_API_URL`: (Optional) HackMD API Endpoint URL. Default: `https://api.hackmd.io/v1`
 
 You can get an API token from [HackMD settings](https://hackmd.io/settings#api).
 
-## Usage
-
-### Start the MCP server
-
-#### Local installation:
-
-```bash
-bun start  # or use npm, yarn, pnpm
-```
-
-#### Using bunx (without cloning):
-
-```bash
-HACKMD_API_TOKEN=your_api_token bunx hackmd-mcp
-```
-
-### Debugging with MCP Inspector
-
-You can use the MCP Inspector to test and debug the HackMD MCP server:
-
-```bash
-# Using the package.json script
-bun run inspector  # or use npm, yarn, pnpm
-
-# Alternative: Direct use with bunx (or npx)
-bunx @modelcontextprotocol/inspector -e HACKMD_API_TOKEN=your_api_token bunx hackmd-mcp
-```
-
-Then open your browser to the provided URL (usually http://localhost:5173) to access the MCP Inspector interface. From there, you can:
-
-1. Connect to your running HackMD MCP server
-2. Browse available tools
-3. Run tools with custom parameters
-4. View the responses
-
-This is particularly useful for testing your setup before connecting it to Claude or another AI assistant.
-
-### Using with Claude Desktop or other MCP clients
+## Install to Claude Desktop (or other MCP clients)
 
 1. Add this server to your `claude_desktop_config.json`:
 
@@ -138,6 +73,50 @@ Then use commands like:
 ```
 Please list all my notes.
 ```
+
+## Local Development
+
+This project uses [Bun](https://bun.sh) as its package manager. You should install it if you haven't already.
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/yuna0x0/hackmd-mcp.git
+cd hackmd-mcp
+bun install
+```
+
+### Configuration
+
+1. Create a `.env` file by copying the example:
+```bash
+cp .env.example .env
+```
+
+2. Edit the `.env` file and add your HackMD API token:
+```
+HACKMD_API_TOKEN=your_api_token
+```
+
+## Debugging with MCP Inspector
+
+You can use the MCP Inspector to test and debug the HackMD MCP server:
+
+```bash
+npx @modelcontextprotocol/inspector -e HACKMD_API_TOKEN=your_api_token npx hackmd-mcp
+
+# Use this instead when Local Development
+bun run inspector
+```
+
+Then open your browser to the provided URL (usually http://localhost:5173) to access the MCP Inspector interface. From there, you can:
+
+1. Connect to your running HackMD MCP server
+2. Browse available tools
+3. Run tools with custom parameters
+4. View the responses
+
+This is particularly useful for testing your setup before connecting it to Claude or another AI assistant.
 
 ## Security Notice
 
