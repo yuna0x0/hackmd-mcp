@@ -22,6 +22,28 @@ You can get an API token from [HackMD settings](https://hackmd.io/settings#api).
 
 ## Install to Claude Desktop (or other MCP clients)
 
+### Installing via Smithery
+
+To install HackMD MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@yuna0x0/hackmd-mcp):
+
+```bash
+npx -y @smithery/cli install @yuna0x0/hackmd-mcp --client claude
+
+# For other MCP clients, use the following command:
+# List available clients
+npx -y @smithery/cli list clients
+# Install to other clients
+npx -y @smithery/cli install @yuna0x0/hackmd-mcp --client <client_name>
+```
+
+### Installing via mcp-get
+
+```bash
+npx @michaellatman/mcp-get@latest install hackmd-mcp
+```
+
+### Manual Installation
+
 1. Add this server to your `claude_desktop_config.json`:
 
 ```json
@@ -40,14 +62,6 @@ You can get an API token from [HackMD settings](https://hackmd.io/settings#api).
 
 2. Restart Claude Desktop
 3. Use the tools to interact with your HackMD account
-
-### Installing via Smithery
-
-To install HackMD MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@yuna0x0/hackmd-mcp):
-
-```bash
-npx -y @smithery/cli install @yuna0x0/hackmd-mcp --client claude
-```
 
 ## Available Tools
 
