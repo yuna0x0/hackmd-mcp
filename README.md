@@ -153,6 +153,11 @@ Docker build (Local Development):
 docker build -t yuna0x0/hackmd-mcp .
 ```
 
+Docker multi-platform build (Local Development):
+```bash
+docker buildx build --platform linux/amd64,linux/arm64 -t yuna0x0/hackmd-mcp .
+```
+
 ## Security Notice
 
 This MCP server requires your HackMD API token in the .env file or as an environment variable. Keep this information secure and never commit it to version control.
