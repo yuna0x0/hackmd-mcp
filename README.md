@@ -132,7 +132,7 @@ npx @modelcontextprotocol/inspector -e HACKMD_API_TOKEN=your_api_token npx hackm
 bun run inspector
 ```
 
-Then open your browser to the provided URL (usually http://localhost:5173) to access the MCP Inspector interface. From there, you can:
+Then open your browser to the provided URL (usually http://127.0.0.1:6274) to access the MCP Inspector interface. From there, you can:
 
 1. Connect to your running HackMD MCP server
 2. Browse available tools
