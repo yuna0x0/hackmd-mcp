@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/yuna0x0-hackmd-mcp-badge.png)](https://mseep.ai/app/yuna0x0-hackmd-mcp)
+
 # HackMD MCP Server
 [![smithery badge](https://smithery.ai/badge/@yuna0x0/hackmd-mcp)](https://smithery.ai/server/@yuna0x0/hackmd-mcp)
 
