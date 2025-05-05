@@ -7,6 +7,11 @@ export function registerUserApiTools(server: McpServer, client: HackMDAPI.API) {
     "get_user_info",
     "Get information about the authenticated user",
     {},
+    {
+      title: "Get user information",
+      readOnlyHint: true,
+      openWorldHint: true,
+    },
     async () => {
       try {
         const userInfo = await client.getMe();

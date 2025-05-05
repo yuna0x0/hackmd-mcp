@@ -10,6 +10,11 @@ export function registerTeamsApiTools(
     "list_teams",
     "List all teams accessible to the user",
     {},
+    {
+      title: "Get a list of the teams to which the user has permission",
+      readOnlyHint: true,
+      openWorldHint: true,
+    },
     async () => {
       try {
         const teams = await client.getTeams();

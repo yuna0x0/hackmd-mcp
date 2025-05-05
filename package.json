@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "license": "MIT",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "author": "yuna0x0 <yuna@yuna0x0.com>",
   "repository": {
     "type": "git",
@@ -25,12 +25,12 @@
   },
   "dependencies": {
     "@hackmd/api": "^2.4.0",
-    "@modelcontextprotocol/sdk": "^1.9.0",
+    "@modelcontextprotocol/sdk": "^1.11.0",
     "dotenv": "^16.5.0",
-    "zod": "^3.24.2"
+    "zod": "^3.24.4"
   },
   "devDependencies": {
-    "@modelcontextprotocol/inspector": "^0.8.2",
+    "@modelcontextprotocol/inspector": "^0.11.0",
     "rimraf": "^6.0.1",
     "shx": "^0.4.0",
     "typescript": "^5.8.3"

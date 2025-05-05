@@ -15,6 +15,11 @@ export function registerUserNotesApiTools(
     "list_user_notes",
     "List all notes owned by the user",
     {},
+    {
+      title: "Get a list of notes in the user's workspace",
+      readOnlyHint: true,
+      openWorldHint: true,
+    },
     async () => {
       try {
         const notes = await client.getNoteList();
@@ -42,6 +47,11 @@ export function registerUserNotesApiTools(
     {
       noteId: z.string().describe("Note ID"),
     },
+    {
+      title: "Get a note",
+      readOnlyHint: true,
+      openWorldHint: true,
+    },
     async ({ noteId }) => {
       try {
         const note = await client.getNote(noteId);
@@ -68,6 +78,13 @@ export function registerUserNotesApiTools(
     "Create a new note",
     {
       payload: CreateNoteOptionsSchema.describe("Create note options"),
+    },
+    {
+      title: "Create a note",
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: false,
+      openWorldHint: true,
     },
     async ({ payload }) => {
       try {
@@ -97,6 +114,13 @@ export function registerUserNotesApiTools(
       noteId: z.string().describe("Note ID"),
       payload: UpdateNoteOptionsSchema.describe("Update note options"),
     },
+    {
+      title: "Update a note",
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: false,
+      openWorldHint: true,
+    },
     async ({ noteId, payload }) => {
       try {
         await client.updateNote(noteId, payload);
@@ -124,6 +148,13 @@ export function registerUserNotesApiTools(
     {
       noteId: z.string().describe("Note ID"),
     },
+    {
+      title: "Delete a note",
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: true,
+      openWorldHint: true,
+    },
     async ({ noteId }) => {
       try {
         await client.deleteNote(noteId);
@@ -146,22 +177,32 @@ export function registerUserNotesApiTools(
   );
 
   // Tool: Get user's read history
-  server.tool("get_history", "Get user's reading history", {}, async () => {
-    try {
-      const history = await client.getHistory();
-      return {
-        content: [
-          {
-            type: "text",
-            text: JSON.stringify(history, null, 2),
-          },
-        ],
-      };
-    } catch (error: any) {
-      return {
-        content: [{ type: "text", text: `Error: ${error.message}` }],
-        isError: true,
-      };
-    }
-  });
+  server.tool(
+    "get_history",
+    "Get user's reading history",
+    {},
+    {
+      title: "Get a history of read notes",
+      readOnlyHint: true,
+      openWorldHint: true,
+    },
+    async () => {
+      try {
+        const history = await client.getHistory();
+        return {
+          content: [
+            {
+              type: "text",
+              text: JSON.stringify(history, null, 2),
+            },
+          ],
+        };
+      } catch (error: any) {
+        return {
+          content: [{ type: "text", text: `Error: ${error.message}` }],
+          isError: true,
+        };
+      }
+    },
+  );
 }

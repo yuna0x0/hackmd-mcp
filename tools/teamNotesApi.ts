@@ -17,6 +17,11 @@ export function registerTeamNotesApiTools(
     {
       teamPath: z.string().describe("Team path"),
     },
+    {
+      title: "Get a list of notes in a Team's workspace",
+      readOnlyHint: true,
+      openWorldHint: true,
+    },
     async ({ teamPath }) => {
       try {
         const notes = await client.getTeamNotes(teamPath);
@@ -44,6 +49,13 @@ export function registerTeamNotesApiTools(
     {
       teamPath: z.string().describe("Team path"),
       payload: CreateNoteOptionsSchema.describe("Create note options"),
+    },
+    {
+      title: "Create a note in a Team workspace",
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: false,
+      openWorldHint: true,
     },
     async ({ teamPath, payload }) => {
       try {
@@ -74,6 +86,13 @@ export function registerTeamNotesApiTools(
       noteId: z.string().describe("Note ID"),
       options: UpdateNoteOptionsSchema.describe("Update note options"),
     },
+    {
+      title: "Update a note in a Team's workspace",
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: false,
+      openWorldHint: true,
+    },
     async ({ teamPath, noteId, options }) => {
       try {
         await client.updateTeamNote(teamPath, noteId, options);
@@ -101,6 +120,13 @@ export function registerTeamNotesApiTools(
     {
       teamPath: z.string().describe("Team path"),
       noteId: z.string().describe("Note ID"),
+    },
+    {
+      title: "Delete a note in a Team's workspace",
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: true,
+      openWorldHint: true,
     },
     async ({ teamPath, noteId }) => {
       try {
