@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "license": "MIT",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "author": "yuna0x0 <yuna@yuna0x0.com>",
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   "dependencies": {
     "@hackmd/api": "^2.4.0",
     "@modelcontextprotocol/sdk": "^1.11.1",
+    "axios": "^1.9.0",
     "dotenv": "^16.5.0",
     "zod": "^3.24.4"
   },
