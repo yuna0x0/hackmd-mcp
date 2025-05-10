@@ -17,10 +17,10 @@
   ],
   "scripts": {
     "clean": "rimraf 'dist/'",
-    "build": "bun run clean && tsc && shx chmod +x dist/*.js",
-    "prepare": "bun run build",
-    "start": "bun run build && node dist/index.js",
-    "inspector": "bun run build && mcp-inspector node dist/index.js",
+    "build": "pnpm run clean && tsc && shx chmod +x dist/*.js",
+    "prepare": "pnpm run build",
+    "start": "pnpm run build && node dist/index.js",
+    "inspector": "pnpm run build && mcp-inspector node dist/index.js",
     "watch": "tsc --watch"
   },
   "dependencies": {
@@ -45,5 +45,6 @@
     "hackmd",
     "llm",
     "mcp-server"
-  ]
+  ],
+  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"
 }

@@ -99,14 +99,14 @@ Please list all my notes.
 
 ## Local Development
 
-This project uses [Bun](https://bun.sh) as its package manager. You should install it if you haven't already.
+This project uses [pnpm](https://pnpm.io) as its package manager.
 
 Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/yuna0x0/hackmd-mcp.git
 cd hackmd-mcp
-bun install
+pnpm install
 ```
 
 ### Configuration
@@ -129,7 +129,7 @@ You can use the MCP Inspector to test and debug the HackMD MCP server:
 npx @modelcontextprotocol/inspector -e HACKMD_API_TOKEN=your_api_token npx hackmd-mcp
 
 # Use this instead when Local Development
-bun run inspector
+pnpm run inspector
 ```
 
 Then open your browser to the provided URL (usually http://127.0.0.1:6274) to access the MCP Inspector interface. From there, you can:
