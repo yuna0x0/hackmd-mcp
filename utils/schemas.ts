@@ -1,8 +1,19 @@
 import { z } from "zod";
-import {
-  NotePermissionRole,
-  CommentPermissionType,
-} from "@hackmd/api/dist/type.js";
+
+// Local type definitions to match HackMD API types
+enum NotePermissionRole {
+  OWNER = "owner",
+  SIGNED_IN = "signed_in",
+  GUEST = "guest",
+}
+
+enum CommentPermissionType {
+  DISABLED = "disabled",
+  FORBIDDEN = "forbidden",
+  OWNERS = "owners",
+  SIGNED_IN_USERS = "signed_in_users",
+  EVERYONE = "everyone",
+}
 
 export const CreateNoteOptionsSchema = z.object({
   title: z.string().optional().describe("Note title"),

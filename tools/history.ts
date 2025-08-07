@@ -1,25 +1,25 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { API } from "@hackmd/api";
 
-export function registerTeamsApiTools(server: McpServer, client: API) {
-  // Tool: List teams
+export function registerHistoryApiTools(server: McpServer, client: API) {
+  // Tool: Get user's read history
   server.tool(
-    "list_teams",
-    "List all teams accessible to the user",
+    "get_history",
+    "Get user's reading history",
     {},
     {
-      title: "Get a list of the teams to which the user has permission",
+      title: "Get a history of read notes",
       readOnlyHint: true,
       openWorldHint: true,
     },
     async () => {
       try {
-        const teams = await client.getTeams();
+        const history = await client.getHistory();
         return {
           content: [
             {
               type: "text",
-              text: JSON.stringify(teams, null, 2),
+              text: JSON.stringify(history, null, 2),
             },
           ],
         };

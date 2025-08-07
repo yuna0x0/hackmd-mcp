@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "license": "MIT",
-  "version": "1.2.8",
+  "version": "1.3.0",
   "author": "yuna0x0 <yuna@yuna0x0.com>",
   "repository": {
     "type": "git",
@@ -24,16 +24,16 @@
     "watch": "tsc --watch"
   },
   "dependencies": {
-    "@hackmd/api": "^2.4.0",
-    "@modelcontextprotocol/sdk": "^1.11.1",
-    "dotenv": "^16.5.0",
-    "zod": "^3.24.4"
+    "@hackmd/api": "^2.5.0",
+    "@modelcontextprotocol/sdk": "^1.17.1",
+    "dotenv": "^17.2.1",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@modelcontextprotocol/inspector": "^0.11.0",
+    "@modelcontextprotocol/inspector": "^0.16.2",
     "rimraf": "^6.0.1",
     "shx": "^0.4.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -46,11 +46,5 @@
     "llm",
     "mcp-server"
   ],
-  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",
-  "pnpm": {
-    "overrides": {
-      "axios@>=0.8.1 <0.28.0": ">=0.28.0",
-      "axios@<0.30.0": ">=0.30.0"
-    }
-  }
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
 }

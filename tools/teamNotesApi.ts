@@ -1,15 +1,12 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type HackMDAPI from "@hackmd/api";
+import type { API } from "@hackmd/api";
 import { z } from "zod";
 import {
   CreateNoteOptionsSchema,
   UpdateNoteOptionsSchema,
 } from "../utils/schemas.js";
 
-export function registerTeamNotesApiTools(
-  server: McpServer,
-  client: HackMDAPI.API,
-) {
+export function registerTeamNotesApiTools(server: McpServer, client: API) {
   // Tool: List team notes
   server.tool(
     "list_team_notes",
@@ -95,12 +92,12 @@ export function registerTeamNotesApiTools(
     },
     async ({ teamPath, noteId, options }) => {
       try {
-        await client.updateTeamNote(teamPath, noteId, options);
+        const result = await client.updateTeamNote(teamPath, noteId, options);
         return {
           content: [
             {
               type: "text",
-              text: `Team note ${noteId} updated successfully`,
+              text: `Team note ${noteId} updated successfully:\n${JSON.stringify(result, null, 2)}`,
             },
           ],
         };
@@ -130,13 +127,12 @@ export function registerTeamNotesApiTools(
     },
     async ({ teamPath, noteId }) => {
       try {
-        await client.deleteTeamNote(teamPath, noteId);
-
+        const result = await client.deleteTeamNote(teamPath, noteId);
         return {
           content: [
             {
               type: "text",
-              text: `Team note ${noteId} deleted successfully`,
+              text: `Team note ${noteId} deleted successfully:\n${JSON.stringify(result, null, 2)}`,
             },
           ],
         };

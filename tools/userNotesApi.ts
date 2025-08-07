@@ -1,15 +1,12 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type HackMDAPI from "@hackmd/api";
+import type { API } from "@hackmd/api";
 import { z } from "zod";
 import {
   CreateNoteOptionsSchema,
   UpdateNoteOptionsSchema,
 } from "../utils/schemas.js";
 
-export function registerUserNotesApiTools(
-  server: McpServer,
-  client: HackMDAPI.API,
-) {
+export function registerUserNotesApiTools(server: McpServer, client: API) {
   // Tool: List user's notes
   server.tool(
     "list_user_notes",
@@ -123,12 +120,12 @@ export function registerUserNotesApiTools(
     },
     async ({ noteId, payload }) => {
       try {
-        await client.updateNote(noteId, payload);
+        const result = await client.updateNote(noteId, payload);
         return {
           content: [
             {
               type: "text",
-              text: `Note ${noteId} updated successfully`,
+              text: `Note ${noteId} updated successfully:\n${JSON.stringify(result, null, 2)}`,
             },
           ],
         };
@@ -157,43 +154,12 @@ export function registerUserNotesApiTools(
     },
     async ({ noteId }) => {
       try {
-        await client.deleteNote(noteId);
-
+        const result = await client.deleteNote(noteId);
         return {
           content: [
             {
               type: "text",
-              text: `Note ${noteId} deleted successfully`,
-            },
-          ],
-        };
-      } catch (error: any) {
-        return {
-          content: [{ type: "text", text: `Error: ${error.message}` }],
-          isError: true,
-        };
-      }
-    },
-  );
-
-  // Tool: Get user's read history
-  server.tool(
-    "get_history",
-    "Get user's reading history",
-    {},
-    {
-      title: "Get a history of read notes",
-      readOnlyHint: true,
-      openWorldHint: true,
-    },
-    async () => {
-      try {
-        const history = await client.getHistory();
-        return {
-          content: [
-            {
-              type: "text",
-              text: JSON.stringify(history, null, 2),
+              text: `Note ${noteId} deleted successfully:\n${JSON.stringify(result, null, 2)}`,
             },
           ],
         };

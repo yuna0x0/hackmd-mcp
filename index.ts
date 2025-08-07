@@ -3,7 +3,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import dotenv from "dotenv";
-import HackMDAPI from "@hackmd/api";
+import { API } from "@hackmd/api";
 import { registerAllTools } from "./tools/index.js";
 
 // Load environment variables
@@ -18,12 +18,12 @@ if (!API_TOKEN) {
 const API_URL = process.env.HACKMD_API_URL;
 
 // Initialize HackMD API client
-const client = new HackMDAPI.API(API_TOKEN, API_URL);
+const client = new API(API_TOKEN, API_URL);
 
 // Create an MCP server for HackMD API
 const server = new McpServer({
   name: "hackmd-mcp",
-  version: "1.2.8",
+  version: "1.3.0",
 });
 
 // Register all tools

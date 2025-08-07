@@ -1,7 +1,7 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type HackMDAPI from "@hackmd/api";
+import type { API } from "@hackmd/api";
 
-export function registerUserApiTools(server: McpServer, client: HackMDAPI.API) {
+export function registerProfileApiTools(server: McpServer, client: API) {
   // Tool: Get user information
   server.tool(
     "get_user_info",
