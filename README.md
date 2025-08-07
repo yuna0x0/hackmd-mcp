@@ -1,5 +1,4 @@
 # HackMD MCP Server
-[![smithery badge](https://smithery.ai/badge/@yuna0x0/hackmd-mcp)](https://smithery.ai/server/@yuna0x0/hackmd-mcp)
 
 This is a Model Context Protocol (MCP) server for interacting with the [HackMD API](https://hackmd.io/@hackmd-api/developer-portal). It allows AI assistants to perform operations such as:
 
@@ -132,7 +131,7 @@ npx @modelcontextprotocol/inspector -e HACKMD_API_TOKEN=your_api_token npx hackm
 pnpm run inspector
 ```
 
-Then open your browser to the provided URL (usually http://127.0.0.1:6274) to access the MCP Inspector interface. From there, you can:
+Then open your browser to the provided URL (usually http://localhost:6274) to access the MCP Inspector interface. From there, you can:
 
 1. Connect to your running HackMD MCP server
 2. Browse available tools
