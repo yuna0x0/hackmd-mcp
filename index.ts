@@ -23,7 +23,7 @@ const client = new API(API_TOKEN, API_URL);
 // Create an MCP server for HackMD API
 const server = new McpServer({
   name: "hackmd-mcp",
-  version: "1.3.0",
+  version: "1.3.1",
 });
 
 // Register all tools

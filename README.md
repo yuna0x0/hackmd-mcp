@@ -64,8 +64,20 @@ npx @michaellatman/mcp-get@latest install hackmd-mcp
 
 ## Available Tools
 
-### User API
+### Profile API
 - **get_user_info**: Get information about the authenticated user
+
+### Teams API
+- **list_teams**: List all teams accessible to the user
+
+### History API
+- **get_history**: Get user's reading history
+
+### Team Notes API
+- **list_team_notes**: List all notes in a team
+- **create_team_note**: Create a new note in a team
+- **update_team_note**: Update an existing note in a team
+- **delete_team_note**: Delete a note in a team
 
 ### User Notes API
 - **list_user_notes**: List all notes owned by the user
@@ -73,16 +85,6 @@ npx @michaellatman/mcp-get@latest install hackmd-mcp
 - **create_note**: Create a new note
 - **update_note**: Update an existing note
 - **delete_note**: Delete a note
-- **get_history**: Get user's reading history
-
-### Teams API
-- **list_teams**: List all teams accessible to the user
-
-### Team Notes API
-- **list_team_notes**: List all notes in a team
-- **create_team_note**: Create a new note in a team
-- **update_team_note**: Update an existing note in a team
-- **delete_team_note**: Delete a note in a team
 
 ## Example Usage
 
