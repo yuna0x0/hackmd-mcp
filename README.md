@@ -1,4 +1,5 @@
 # HackMD MCP Server
+[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/yuna0x0/hackmd-mcp)](https://archestra.ai/mcp-catalog/yuna0x0__hackmd-mcp)
 
 This is a Model Context Protocol (MCP) server for interacting with the [HackMD API](https://hackmd.io/@hackmd-api/developer-portal). It allows AI assistants to perform operations such as:
 
