@@ -1,4 +1,15 @@
 import { z } from "zod";
+import { DEFAULT_HACKMD_API_URL } from "./constants.js";
+
+export const ConfigSchema = z.object({
+  hackmdApiToken: z
+    .string()
+    .describe("HackMD API token for authenticated requests"),
+  hackmdApiUrl: z
+    .string()
+    .optional()
+    .describe(`HackMD API URL (defaults to ${DEFAULT_HACKMD_API_URL})`),
+});
 
 // Local type definitions to match HackMD API types
 enum NotePermissionRole {
