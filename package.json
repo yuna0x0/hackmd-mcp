@@ -1,5 +1,6 @@
 {
   "name": "hackmd-mcp",
+  "description": "A Model Context Protocol server for integrating HackMD's note-taking platform with AI assistants.",
   "module": "index.ts",
   "type": "module",
   "license": "MIT",
