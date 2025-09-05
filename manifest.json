@@ -1,0 +1,104 @@
+{
+  "manifest_version": "0.1",
+  "name": "hackmd-mcp",
+  "display_name": "HackMD MCP",
+  "version": "1.4.1",
+  "description": "A Model Context Protocol server for integrating HackMD's note-taking platform with AI assistants.",
+  "author": {
+    "name": "yuna0x0",
+    "email": "yuna@yuna0x0.com",
+    "url": "https://yuna0x0.com"
+  },
+  "homepage": "https://github.com/yuna0x0/hackmd-mcp",
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js"],
+      "env": {
+        "HACKMD_API_TOKEN": "${user_config.hackmd_api_token}",
+        "HACKMD_API_URL": "${user_config.hackmd_api_url}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "get_user_info",
+      "description": "Get information about the authenticated user"
+    },
+    {
+      "name": "list_teams",
+      "description": "List all teams accessible to the user"
+    },
+    {
+      "name": "get_history",
+      "description": "Get user's reading history"
+    },
+    {
+      "name": "list_team_notes",
+      "description": "List all notes in a team"
+    },
+    {
+      "name": "create_team_note",
+      "description": "Create a new note in a team"
+    },
+    {
+      "name": "update_team_note",
+      "description": "Update an existing note in a team"
+    },
+    {
+      "name": "delete_team_note",
+      "description": "Delete a note in a team"
+    },
+    {
+      "name": "list_user_notes",
+      "description": "List all notes owned by the user"
+    },
+    {
+      "name": "get_note",
+      "description": "Get a note by its ID"
+    },
+    {
+      "name": "create_note",
+      "description": "Create a new note"
+    },
+    {
+      "name": "update_note",
+      "description": "Update an existing note"
+    },
+    {
+      "name": "delete_note",
+      "description": "Delete a note"
+    }
+  ],
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  },
+  "user_config": {
+    "hackmd_api_token": {
+      "type": "string",
+      "title": "HackMD API Token",
+      "description": "Your HackMD API token for API authentication",
+      "required": true,
+      "sensitive": true
+    },
+    "hackmd_api_url": {
+      "type": "string",
+      "title": "HackMD API URL",
+      "description": "Optional HackMD API URL, defaults to https://api.hackmd.io/v1",
+      "required": false,
+      "sensitive": false,
+      "default": "https://api.hackmd.io/v1"
+    }
+  },
+  "keywords": ["api", "ai", "mcp", "hackmd", "llm", "mcp-server"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuna0x0/hackmd-mcp.git"
+  }
+}
