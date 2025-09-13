@@ -198,6 +198,13 @@ Docker multi-platform build (Local Development):
 docker buildx build --platform linux/amd64,linux/arm64 -t yuna0x0/hackmd-mcp .
 ```
 
+## MCP Bundles (MCPB)
+
+To create an MCP Bundle for this server, run:
+```bash
+pnpm run pack:mcpb
+```
+
 ## Security Notice
 
 This MCP server accepts your HackMD API token in the .env file, environment variable or HTTP header. Keep this information secure and never commit it to version control.

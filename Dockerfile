@@ -25,6 +25,18 @@ RUN pnpm run build
 
 FROM node:22-alpine AS release
 
+LABEL org.opencontainers.image.title="HackMD MCP"
+LABEL org.opencontainers.image.description="A Model Context Protocol server for integrating HackMD's note-taking platform with AI assistants."
+LABEL org.opencontainers.image.version="1.4.2"
+
+LABEL org.opencontainers.image.vendor="yuna0x0"
+LABEL org.opencontainers.image.authors="yuna0x0 <yuna@yuna0x0.com>"
+LABEL org.opencontainers.image.url="https://github.com/yuna0x0/hackmd-mcp"
+LABEL org.opencontainers.image.source="https://github.com/yuna0x0/hackmd-mcp"
+LABEL org.opencontainers.image.licenses="MIT"
+
+LABEL io.modelcontextprotocol.server.name="io.github.yuna0x0/hackmd-mcp"
+
 RUN addgroup -g 1001 -S hackmd-mcp && \
     adduser -S hackmd-mcp -u 1001 -G hackmd-mcp
 

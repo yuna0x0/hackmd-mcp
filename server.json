@@ -7,15 +7,68 @@
     "url": "https://github.com/yuna0x0/hackmd-mcp",
     "source": "github"
   },
-  "version_detail": {
-    "version": "1.4.1"
-  },
+  "version": "1.4.2",
   "packages": [
     {
       "registry_type": "npm",
       "registry_base_url": "https://registry.npmjs.org",
       "identifier": "hackmd-mcp",
-      "version": "1.4.1",
+      "version": "1.4.2",
+      "transport": {
+        "type": "stdio"
+      },
+      "environment_variables": [
+        {
+          "description": "Your HackMD API token for API authentication",
+          "is_required": true,
+          "format": "string",
+          "is_secret": true,
+          "name": "HACKMD_API_TOKEN"
+        },
+        {
+          "description": "Optional HackMD API URL, defaults to https://api.hackmd.io/v1",
+          "is_required": false,
+          "format": "string",
+          "is_secret": false,
+          "name": "HACKMD_API_URL",
+          "default": "https://api.hackmd.io/v1"
+        }
+      ]
+    },
+    {
+      "registry_type": "oci",
+      "registry_base_url": "https://docker.io",
+      "identifier": "yuna0x0/hackmd-mcp",
+      "version": "1.4.2",
+      "transport": {
+        "type": "stdio"
+      },
+      "environment_variables": [
+        {
+          "description": "Your HackMD API token for API authentication",
+          "is_required": true,
+          "format": "string",
+          "is_secret": true,
+          "name": "HACKMD_API_TOKEN"
+        },
+        {
+          "description": "Optional HackMD API URL, defaults to https://api.hackmd.io/v1",
+          "is_required": false,
+          "format": "string",
+          "is_secret": false,
+          "name": "HACKMD_API_URL",
+          "default": "https://api.hackmd.io/v1"
+        }
+      ]
+    },
+    {
+      "registry_type": "mcpb",
+      "identifier": "https://github.com/yuna0x0/hackmd-mcp/releases/download/v1.4.2/hackmd-mcp-1.4.2.mcpb",
+      "file_sha256": "7b6ee105271d8595e3e5a0a3e4f9075ab3a2b7b373f529f4c3e99d1f93dead62",
+      "version": "1.4.2",
+      "transport": {
+        "type": "stdio"
+      },
       "environment_variables": [
         {
           "description": "Your HackMD API token for API authentication",

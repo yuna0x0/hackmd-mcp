@@ -1,10 +1,11 @@
 {
   "name": "hackmd-mcp",
+  "mcpName": "io.github.yuna0x0/hackmd-mcp",
   "description": "A Model Context Protocol server for integrating HackMD's note-taking platform with AI assistants.",
   "module": "index.ts",
   "type": "module",
   "license": "MIT",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "author": "yuna0x0 <yuna@yuna0x0.com>",
   "repository": {
     "type": "git",
@@ -27,18 +28,20 @@
     "dev:http": "TRANSPORT=http tsx index.ts",
     "dev:stdio": "tsx index.ts",
     "inspector": "pnpm run build && mcp-inspector node dist/index.js",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "pack:mcpb": "mcpb pack"
   },
   "dependencies": {
     "@hackmd/api": "^2.5.0",
-    "@modelcontextprotocol/sdk": "^1.17.5",
+    "@modelcontextprotocol/sdk": "^1.18.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@modelcontextprotocol/inspector": "^0.16.2",
+    "@anthropic-ai/mcpb": "^1.1.0",
+    "@modelcontextprotocol/inspector": "^0.16.7",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "rimraf": "^6.0.1",
@@ -57,5 +60,5 @@
     "llm",
     "mcp-server"
   ],
-  "packageManager": "pnpm@10.15.1+sha512.34e538c329b5553014ca8e8f4535997f96180a1d0f614339357449935350d924e22f8614682191264ec33d1462ac21561aff97f6bb18065351c162c7e8f6de67"
+  "packageManager": "pnpm@10.16.0+sha512.8066e7b034217b700a9a4dbb3a005061d641ba130a89915213a10b3ca4919c19c037bec8066afdc559b89635fdb806b16ea673f2468fbb28aabfa13c53e3f769"
 }
