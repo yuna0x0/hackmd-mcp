@@ -122,7 +122,7 @@ function parseConfig(req: Request): { config?: any; error?: any } {
 function createServer({ config }: { config: z.infer<typeof ConfigSchema> }) {
   const server = new McpServer({
     name: "hackmd-mcp",
-    version: "1.4.2",
+    version: "1.5.0",
   });
 
   // Initialize HackMD API client with config

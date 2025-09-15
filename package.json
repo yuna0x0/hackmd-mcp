@@ -5,7 +5,7 @@
   "module": "index.ts",
   "type": "module",
   "license": "MIT",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "author": "yuna0x0 <yuna@yuna0x0.com>",
   "repository": {
     "type": "git",
