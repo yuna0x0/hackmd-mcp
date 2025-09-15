@@ -41,13 +41,40 @@ app.use(
 
 app.use(express.json());
 
+// Helper function to create JSON-RPC error responses
+function createJsonRpcError(code: number, message: string) {
+  return {
+    jsonrpc: "2.0" as const,
+    error: { code, message },
+    id: null,
+  };
+}
+
+// Get allowed HackMD API URLs from environment
+function getAllowedApiUrls(): string[] {
+  const allowedUrls = process.env.ALLOWED_HACKMD_API_URLS;
+  if (!allowedUrls || allowedUrls.trim().length === 0) {
+    return [DEFAULT_HACKMD_API_URL];
+  }
+  return allowedUrls
+    .split(",")
+    .map((url) => url.trim())
+    .filter((url) => url.length > 0);
+}
+
+// Validate if the provided API URL is allowed
+function isAllowedApiUrl(url: string): boolean {
+  const allowedUrls = getAllowedApiUrls();
+  return allowedUrls.includes(url);
+}
+
 // Parse configuration from header or query parameters (for Smithery)
-function parseConfig(req: Request) {
+function parseConfig(req: Request): { config?: any; error?: any } {
   const hackmdApiTokenHeader =
     req.headers[HACKMD_API_TOKEN_HEADER.toLowerCase()];
   const hackmdApiUrlHeader = req.headers[HACKMD_API_URL_HEADER.toLowerCase()];
 
-  let config: any = {};
+  const config: any = {};
 
   if (
     typeof hackmdApiTokenHeader === "string" &&
@@ -65,20 +92,30 @@ function parseConfig(req: Request) {
 
   // If any config found in headers, return it
   if (Object.keys(config).length > 0) {
-    return config;
+    return { config };
   }
 
   // Smithery passes config as base64-encoded JSON in query parameters
   const configParam = req.query.config;
   if (typeof configParam === "string" && configParam.trim().length > 0) {
-    const smitheryConfig = JSON.parse(
-      Buffer.from(configParam, "base64").toString(),
-    );
-    return smitheryConfig;
+    try {
+      const smitheryConfig = JSON.parse(
+        Buffer.from(configParam, "base64").toString(),
+      );
+
+      return { config: smitheryConfig };
+    } catch (error) {
+      return {
+        error: createJsonRpcError(
+          -32000,
+          "Bad Request: Invalid base64-encoded config parameter",
+        ),
+      };
+    }
   }
 
   // Return empty config if nothing found
-  return config;
+  return { config };
 }
 
 // Create MCP server with HackMD integration
@@ -100,31 +137,53 @@ function createServer({ config }: { config: z.infer<typeof ConfigSchema> }) {
 // Handle MCP requests at /mcp endpoint
 app.post("/mcp", async (req: Request, res: Response) => {
   try {
-    // Parse configuration
-    const rawConfig = parseConfig(req);
+    // Parse configuration with URL validation
+    const parseResult = parseConfig(req);
+
+    // Check for parsing errors
+    if (parseResult.error) {
+      return res.status(400).json(parseResult.error);
+    }
+
+    const rawConfig = parseResult.config || {};
 
     // Check if API token is available (from header, query param, or env var)
     const hackmdApiToken =
       rawConfig.hackmdApiToken || process.env.HACKMD_API_TOKEN;
 
     if (!hackmdApiToken || hackmdApiToken.trim().length === 0) {
-      return res.status(400).json({
-        jsonrpc: "2.0",
-        error: {
-          code: -32000,
-          message: `Bad Request: Please provide a HackMD API token via header '${HACKMD_API_TOKEN_HEADER}'.`,
-        },
-        id: null,
-      });
+      return res
+        .status(400)
+        .json(
+          createJsonRpcError(
+            -32000,
+            `Bad Request: Please provide a HackMD API token via header '${HACKMD_API_TOKEN_HEADER}'.`,
+          ),
+        );
     }
 
-    // Validate and parse configuration with fallbacks to environment variables
+    // Extract API URL from config or use default
+    const hackmdApiUrl =
+      rawConfig.hackmdApiUrl ||
+      process.env.HACKMD_API_URL ||
+      DEFAULT_HACKMD_API_URL;
+
+    // Validation of the API URL
+    if (!isAllowedApiUrl(hackmdApiUrl)) {
+      return res
+        .status(400)
+        .json(
+          createJsonRpcError(
+            -32000,
+            `Bad Request: HackMD API URL "${hackmdApiUrl}" is not in the allowed list`,
+          ),
+        );
+    }
+
+    // Validate and parse configuration
     const config = ConfigSchema.parse({
       hackmdApiToken,
-      hackmdApiUrl:
-        rawConfig.hackmdApiUrl ||
-        process.env.HACKMD_API_URL ||
-        DEFAULT_HACKMD_API_URL,
+      hackmdApiUrl,
     });
 
     const server = createServer({ config });
@@ -143,41 +202,23 @@ app.post("/mcp", async (req: Request, res: Response) => {
   } catch (error) {
     console.error("Error handling MCP request:", error);
     if (!res.headersSent) {
-      res.status(500).json({
-        jsonrpc: "2.0",
-        error: { code: -32603, message: "Internal server error" },
-        id: null,
-      });
+      res.status(500).json(createJsonRpcError(-32603, "Internal server error"));
     }
   }
 });
 
 // SSE notifications not supported in stateless mode
 app.get("/mcp", async (req: Request, res: Response) => {
-  res.writeHead(405).end(
-    JSON.stringify({
-      jsonrpc: "2.0",
-      error: {
-        code: -32000,
-        message: "Method not allowed.",
-      },
-      id: null,
-    }),
-  );
+  res
+    .writeHead(405)
+    .end(JSON.stringify(createJsonRpcError(-32000, "Method not allowed.")));
 });
 
 // Session termination not needed in stateless mode
 app.delete("/mcp", async (req: Request, res: Response) => {
-  res.writeHead(405).end(
-    JSON.stringify({
-      jsonrpc: "2.0",
-      error: {
-        code: -32000,
-        message: "Method not allowed.",
-      },
-      id: null,
-    }),
-  );
+  res
+    .writeHead(405)
+    .end(JSON.stringify(createJsonRpcError(-32000, "Method not allowed.")));
 });
 
 // Main function to start the server in the appropriate mode

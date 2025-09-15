@@ -61,6 +61,9 @@ When using the STDIO transport or hosting the HTTP transport server, you can pas
 - `HACKMD_API_TOKEN`: HackMD API Token (Required for all operations)
 - `HACKMD_API_URL`: (Optional) HackMD API URL (Defaults to https://api.hackmd.io/v1)
 
+Environment variables applied only for the HTTP transport server:
+- `ALLOWED_HACKMD_API_URLS`: (Optional) A comma-separated list of allowed HackMD API URLs. The server will reject requests if the provide HackMD API URL is not in this list. If not set, only the default URL (https://api.hackmd.io/v1) is allowed.
+
 > [!CAUTION]
 > If you are hosting the HTTP transport server with token pre-configured, you should protect your endpoint and implement authentication before allowing users to access it. Otherwise, anyone can access your MCP server while using your HackMD token.
 
