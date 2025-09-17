@@ -62,6 +62,32 @@
       ]
     },
     {
+      "registry_type": "oci",
+      "registry_base_url": "https://ghcr.io",
+      "identifier": "yuna0x0/hackmd-mcp",
+      "version": "1.5.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environment_variables": [
+        {
+          "description": "Your HackMD API token for API authentication",
+          "is_required": true,
+          "format": "string",
+          "is_secret": true,
+          "name": "HACKMD_API_TOKEN"
+        },
+        {
+          "description": "Optional HackMD API URL, defaults to https://api.hackmd.io/v1",
+          "is_required": false,
+          "format": "string",
+          "is_secret": false,
+          "name": "HACKMD_API_URL",
+          "default": "https://api.hackmd.io/v1"
+        }
+      ]
+    },
+    {
       "registry_type": "mcpb",
       "identifier": "https://github.com/yuna0x0/hackmd-mcp/releases/download/v1.5.0/hackmd-mcp-1.5.0.mcpb",
       "file_sha256": "6035e3082ffaf5627e1293a2c8a5d7f42496010431c9b026859dae3bbaa9ce38",
