@@ -97,6 +97,7 @@
   },
   "keywords": ["api", "ai", "mcp", "hackmd", "llm", "mcp-server"],
   "license": "MIT",
+  "privacy_policies": ["https://hackmd.io/s/privacy"],
   "repository": {
     "type": "git",
     "url": "https://github.com/yuna0x0/hackmd-mcp.git"
