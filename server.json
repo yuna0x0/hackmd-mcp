@@ -64,7 +64,7 @@
     {
       "registryType": "mcpb",
       "identifier": "https://github.com/yuna0x0/hackmd-mcp/releases/download/v1.5.1/hackmd-mcp-1.5.1.mcpb",
-      "fileSha256": "d3048e713df67729bacc695b66a365f2b9f04aa38ac85fcfe90406b4610e3da2",
+      "fileSha256": "a994d25dbf19fb2fd783c5daba402bf87fc5a1456e1a11acf6e729984a5524ae",
       "version": "1.5.1",
       "transport": {
         "type": "stdio"
