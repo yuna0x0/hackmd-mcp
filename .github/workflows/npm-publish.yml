@@ -3,12 +3,12 @@ on:
   workflow_dispatch:
   # release:
   #   types: [published]
-  # push:
-  #   tags: ['v*']
+  push:
+    tags: ["v*"]
 jobs:
   publish:
     runs-on: ubuntu-latest
-    environment: release
+    environment: npm-release
     permissions:
       contents: read
       id-token: write

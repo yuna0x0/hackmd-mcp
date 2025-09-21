@@ -2,7 +2,7 @@
   "manifest_version": "0.1",
   "name": "hackmd-mcp",
   "display_name": "HackMD MCP",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "A Model Context Protocol server for integrating HackMD's note-taking platform with AI assistants.",
   "author": {
     "name": "yuna0x0",

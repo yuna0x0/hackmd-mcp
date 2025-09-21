@@ -5,7 +5,7 @@
   "module": "index.ts",
   "type": "module",
   "license": "MIT",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "author": "yuna0x0 <yuna@yuna0x0.com>",
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@hackmd/api": "^2.5.0",
-    "@modelcontextprotocol/sdk": "^1.18.0",
+    "@modelcontextprotocol/sdk": "^1.18.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@anthropic-ai/mcpb": "^1.1.0",
-    "@modelcontextprotocol/inspector": "^0.16.7",
+    "@modelcontextprotocol/inspector": "^0.16.8",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "rimraf": "^6.0.1",
@@ -60,5 +60,5 @@
     "llm",
     "mcp-server"
   ],
-  "packageManager": "pnpm@10.16.1+sha512.0e155aa2629db8672b49e8475da6226aa4bdea85fdcdfdc15350874946d4f3c91faaf64cbdc4a5d1ab8002f473d5c3fcedcd197989cf0390f9badd3c04678706"
+  "packageManager": "pnpm@10.17.0+sha512.fce8a3dd29a4ed2ec566fb53efbb04d8c44a0f05bc6f24a73046910fb9c3ce7afa35a0980500668fa3573345bd644644fa98338fa168235c80f4aa17aa17fbef"
 }

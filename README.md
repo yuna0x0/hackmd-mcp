@@ -186,19 +186,19 @@ This is particularly useful for testing your setup before connecting it to MCP c
 
 ## Docker
 
-Pull from Docker Hub:
+Pull from GitHub Container Registry:
 ```bash
-docker pull yuna0x0/hackmd-mcp
+docker pull ghcr.io/yuna0x0/hackmd-mcp
 ```
 
 Docker build (Local Development):
 ```bash
-docker build -t yuna0x0/hackmd-mcp .
+docker build -t ghcr.io/yuna0x0/hackmd-mcp .
 ```
 
 Docker multi-platform build (Local Development):
 ```bash
-docker buildx build --platform linux/amd64,linux/arm64 -t yuna0x0/hackmd-mcp .
+docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/yuna0x0/hackmd-mcp .
 ```
 
 ## MCP Bundles (MCPB)

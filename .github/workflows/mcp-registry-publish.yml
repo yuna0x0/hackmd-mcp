@@ -4,11 +4,12 @@ on:
   # release:
   #   types: [published]
   # push:
-  #   tags: ['v*']
+  #   tags: ["v*"]
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment: mcp-registry-release
     permissions:
       id-token: write # Required for OIDC
       contents: read
