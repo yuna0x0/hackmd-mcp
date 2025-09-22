@@ -5,7 +5,7 @@
   "module": "index.ts",
   "type": "module",
   "license": "MIT",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "author": "yuna0x0 <yuna@yuna0x0.com>",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "dev:stdio": "tsx index.ts",
     "inspector": "pnpm run build && mcp-inspector node dist/index.js",
     "watch": "tsc --watch",
-    "pack:mcpb": "mcpb pack"
+    "pack:mcpb": "pnpm install --shamefully-hoist && mcpb pack"
   },
   "dependencies": {
     "@hackmd/api": "^2.5.0",

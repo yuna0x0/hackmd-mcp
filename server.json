@@ -7,13 +7,13 @@
     "url": "https://github.com/yuna0x0/hackmd-mcp",
     "source": "github"
   },
-  "version": "1.5.1",
+  "version": "1.5.2",
   "packages": [
     {
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "hackmd-mcp",
-      "version": "1.5.1",
+      "version": "1.5.2",
       "transport": {
         "type": "stdio"
       },
@@ -39,7 +39,7 @@
       "registryType": "oci",
       "registryBaseUrl": "https://ghcr.io",
       "identifier": "yuna0x0/hackmd-mcp",
-      "version": "1.5.1",
+      "version": "1.5.2",
       "transport": {
         "type": "stdio"
       },
@@ -63,9 +63,9 @@
     },
     {
       "registryType": "mcpb",
-      "identifier": "https://github.com/yuna0x0/hackmd-mcp/releases/download/v1.5.1/hackmd-mcp-1.5.1.mcpb",
-      "fileSha256": "a994d25dbf19fb2fd783c5daba402bf87fc5a1456e1a11acf6e729984a5524ae",
-      "version": "1.5.1",
+      "identifier": "https://github.com/yuna0x0/hackmd-mcp/releases/download/v1.5.2/hackmd-mcp-1.5.2.mcpb",
+      "fileSha256": "85c9f9930596291f3ba9e0e5d3241cbeac4d5bcc6832845bd7c05348cc5511d5",
+      "version": "1.5.2",
       "transport": {
         "type": "stdio"
       },

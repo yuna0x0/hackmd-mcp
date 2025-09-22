@@ -16,7 +16,7 @@ import {
   DEFAULT_HACKMD_API_URL,
 } from "./utils/constants.js";
 
-dotenv.config();
+dotenv.config({ quiet: true });
 
 const app = express();
 const PORT = process.env.PORT || 8081;
@@ -122,7 +122,7 @@ function parseConfig(req: Request): { config?: any; error?: any } {
 function createServer({ config }: { config: z.infer<typeof ConfigSchema> }) {
   const server = new McpServer({
     name: "hackmd-mcp",
-    version: "1.5.1",
+    version: "1.5.2",
   });
 
   // Initialize HackMD API client with config
