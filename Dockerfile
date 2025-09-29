@@ -28,7 +28,7 @@ FROM node:22-alpine AS release
 
 LABEL org.opencontainers.image.title="HackMD MCP"
 LABEL org.opencontainers.image.description="A Model Context Protocol server for integrating HackMD's note-taking platform with AI assistants."
-LABEL org.opencontainers.image.version="1.5.2"
+LABEL org.opencontainers.image.version="1.5.3"
 
 LABEL org.opencontainers.image.vendor="yuna0x0"
 LABEL org.opencontainers.image.authors="yuna0x0 <yuna@yuna0x0.com>"
