@@ -1,88 +1,94 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
   "name": "io.github.yuna0x0/hackmd-mcp",
   "description": "A Model Context Protocol server for integrating HackMD's note-taking platform with AI assistants.",
-  "status": "active",
+  "title": "HackMD",
+  "websiteUrl": "https://github.com/yuna0x0/hackmd-mcp",
   "repository": {
     "url": "https://github.com/yuna0x0/hackmd-mcp",
-    "source": "github"
+    "source": "github",
+    "id": "950658365"
   },
-  "version": "1.5.3",
+  "version": "1.5.4",
+  "icons": [
+    {
+      "src": "https://hackmd.io/logo.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": ["any"]
+    }
+  ],
   "packages": [
     {
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "hackmd-mcp",
-      "version": "1.5.3",
+      "version": "1.5.4",
       "transport": {
         "type": "stdio"
       },
       "environmentVariables": [
         {
+          "name": "HACKMD_API_TOKEN",
           "description": "Your HackMD API token for API authentication",
-          "isRequired": true,
           "format": "string",
-          "isSecret": true,
-          "name": "HACKMD_API_TOKEN"
+          "isRequired": true,
+          "isSecret": true
         },
         {
-          "description": "Optional HackMD API URL, defaults to https://api.hackmd.io/v1",
-          "isRequired": false,
-          "format": "string",
-          "isSecret": false,
           "name": "HACKMD_API_URL",
+          "description": "Optional HackMD API URL, defaults to https://api.hackmd.io/v1",
+          "format": "string",
+          "isRequired": false,
+          "isSecret": false,
           "default": "https://api.hackmd.io/v1"
         }
       ]
     },
     {
       "registryType": "oci",
-      "registryBaseUrl": "https://ghcr.io",
-      "identifier": "yuna0x0/hackmd-mcp",
-      "version": "1.5.3",
+      "identifier": "ghcr.io/yuna0x0/hackmd-mcp:1.5.4",
       "transport": {
         "type": "stdio"
       },
       "environmentVariables": [
         {
+          "name": "HACKMD_API_TOKEN",
           "description": "Your HackMD API token for API authentication",
-          "isRequired": true,
           "format": "string",
-          "isSecret": true,
-          "name": "HACKMD_API_TOKEN"
+          "isRequired": true,
+          "isSecret": true
         },
         {
-          "description": "Optional HackMD API URL, defaults to https://api.hackmd.io/v1",
-          "isRequired": false,
-          "format": "string",
-          "isSecret": false,
           "name": "HACKMD_API_URL",
+          "description": "Optional HackMD API URL, defaults to https://api.hackmd.io/v1",
+          "format": "string",
+          "isRequired": false,
+          "isSecret": false,
           "default": "https://api.hackmd.io/v1"
         }
       ]
     },
     {
       "registryType": "mcpb",
-      "identifier": "https://github.com/yuna0x0/hackmd-mcp/releases/download/v1.5.3/hackmd-mcp-1.5.3.mcpb",
-      "fileSha256": "9b216bf4c286ccc1b70f411f0b23777efbae0ab7239b8c99170cfac3b706721a",
-      "version": "1.5.3",
+      "identifier": "https://github.com/yuna0x0/hackmd-mcp/releases/download/v1.5.4/hackmd-mcp-1.5.4.mcpb",
+      "fileSha256": "7260dc071c53e07913b7fe8ff1963f91d0a3f49ead7e76e41b3f3c3803b34165",
       "transport": {
         "type": "stdio"
       },
       "environmentVariables": [
         {
+          "name": "HACKMD_API_TOKEN",
           "description": "Your HackMD API token for API authentication",
-          "isRequired": true,
           "format": "string",
-          "isSecret": true,
-          "name": "HACKMD_API_TOKEN"
+          "isRequired": true,
+          "isSecret": true
         },
         {
-          "description": "Optional HackMD API URL, defaults to https://api.hackmd.io/v1",
-          "isRequired": false,
-          "format": "string",
-          "isSecret": false,
           "name": "HACKMD_API_URL",
+          "description": "Optional HackMD API URL, defaults to https://api.hackmd.io/v1",
+          "format": "string",
+          "isRequired": false,
+          "isSecret": false,
           "default": "https://api.hackmd.io/v1"
         }
       ]
