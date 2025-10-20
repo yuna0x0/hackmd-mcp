@@ -3,13 +3,12 @@
   "name": "io.github.yuna0x0/hackmd-mcp",
   "description": "A Model Context Protocol server for integrating HackMD's note-taking platform with AI assistants.",
   "title": "HackMD",
-  "websiteUrl": "https://github.com/yuna0x0/hackmd-mcp",
   "repository": {
     "url": "https://github.com/yuna0x0/hackmd-mcp",
     "source": "github",
     "id": "950658365"
   },
-  "version": "1.5.4",
+  "version": "1.5.5",
   "icons": [
     {
       "src": "https://hackmd.io/logo.svg",
@@ -22,7 +21,7 @@
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "hackmd-mcp",
-      "version": "1.5.4",
+      "version": "1.5.5",
       "transport": {
         "type": "stdio"
       },
@@ -46,7 +45,7 @@
     },
     {
       "registryType": "oci",
-      "identifier": "ghcr.io/yuna0x0/hackmd-mcp:1.5.4",
+      "identifier": "ghcr.io/yuna0x0/hackmd-mcp:1.5.5",
       "transport": {
         "type": "stdio"
       },
@@ -70,8 +69,8 @@
     },
     {
       "registryType": "mcpb",
-      "identifier": "https://github.com/yuna0x0/hackmd-mcp/releases/download/v1.5.4/hackmd-mcp-1.5.4.mcpb",
-      "fileSha256": "7260dc071c53e07913b7fe8ff1963f91d0a3f49ead7e76e41b3f3c3803b34165",
+      "identifier": "https://github.com/yuna0x0/hackmd-mcp/releases/download/v1.5.5/hackmd-mcp-1.5.5.mcpb",
+      "fileSha256": "9b4cd85660c3a22eb2932c29ebb46f6ca4617dfb3ba20de34c612eeafcd10ec2",
       "transport": {
         "type": "stdio"
       },
