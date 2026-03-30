@@ -2,6 +2,10 @@
 
 A Model Context Protocol (MCP) server that interfaces with the [HackMD API](https://hackmd.io/@hackmd-api/developer-portal), allowing LLM clients to access and interact with HackMD notes, teams, user profiles, and history data.
 
+## Hosted deployment
+
+A hosted deployment is available on [Fronteir AI](https://fronteir.ai/mcp/yuna0x0-hackmd-mcp).
+
 ## Features
 
 - Get user profile information
