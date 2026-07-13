@@ -1,5 +1,14 @@
 name: Mirror to Codeberg
-on: [push, workflow_dispatch]
+on: [push, delete, workflow_dispatch]
+
+# Serialize runs: two concurrent force-pushes (e.g. a push and a delete
+# landing together) could otherwise briefly revert Codeberg to older refs
+concurrency:
+  group: codeberg-mirror
+
+permissions:
+  contents: read
+
 jobs:
   mirror:
     runs-on: ubuntu-latest
