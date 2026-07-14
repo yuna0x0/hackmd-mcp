@@ -56,6 +56,10 @@ export const CreateNoteOptionsSchema = z.object({
     .optional()
     .describe("Comment permission"),
   permalink: z.string().optional().describe("Custom permalink"),
+  parentFolderId: z
+    .string()
+    .optional()
+    .describe("ID of the folder to place the note in"),
 });
 
 export const UpdateNoteOptionsSchema = z.object({
@@ -77,4 +81,8 @@ export const UpdateNoteOptionsSchema = z.object({
     .optional()
     .describe("Write permission"),
   permalink: z.string().optional().describe("Custom permalink"),
+  parentFolderId: z
+    .string()
+    .optional()
+    .describe("ID of the folder to move the note into"),
 });
