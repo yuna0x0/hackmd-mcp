@@ -56,6 +56,7 @@ export const CreateNoteOptionsSchema = z.object({
     .optional()
     .describe("Comment permission"),
   permalink: z.string().optional().describe("Custom permalink"),
+  tags: z.array(z.string()).optional().describe("Note tags"),
 });
 
 export const UpdateNoteOptionsSchema = z.object({
@@ -77,4 +78,5 @@ export const UpdateNoteOptionsSchema = z.object({
     .optional()
     .describe("Write permission"),
   permalink: z.string().optional().describe("Custom permalink"),
+  tags: z.array(z.string()).optional().describe("Note tags"),
 });
